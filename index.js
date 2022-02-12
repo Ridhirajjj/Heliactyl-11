@@ -42,15 +42,15 @@ module.exports.renderdataeval =
       userinfo: req.session.userinfo,
       packagename: req.session.userinfo ? await db.get("package-" + req.session.userinfo.id) ? await db.get("package-" + req.session.userinfo.id) : newsettings.api.client.packages.default : null,
       extraresources: !req.session.userinfo ? null : (await db.get("extra-" + req.session.userinfo.id) ? await db.get("extra-" + req.session.userinfo.id) : {
-        ram: 2048,
-        disk: 2048,
-        cpu: 30,
+        ram: 16000,
+        disk: 80000,
+        cpu: 60,
         servers: 2
       }),
 	  join4res: !req.session.userinfo ? null : (await db.get("j4r-" + req.session.userinfo.id) ? await db.get("j4r-" + req.session.userinfo.id) : {
-        ram: 1024,
-        disk: 2048,
-        cpu: 25,
+        ram: 16000,
+        disk: 80000,
+        cpu: 60,
         servers: 2
       }),
       packages: req.session.userinfo ? newsettings.api.client.packages.list[await db.get("package-" + req.session.userinfo.id) ? await db.get("package-" + req.session.userinfo.id) : newsettings.api.client.packages.default] : null,
